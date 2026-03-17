@@ -1,5 +1,7 @@
 # SRG Login SDK — Android Maven Repository
 
+![Latest Version](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fswisstxt.github.io%2Fsrg-login-sdk-distribution-android%2Fch%2Fsrg%2Flogin%2Fsrglogin-core-android%2Fmaven-metadata.xml&query=%2F%2Flatest&label=latest&color=blue)
+
 ## Integration
 
 ### Gradle (settings.gradle.kts)
