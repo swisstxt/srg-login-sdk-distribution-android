@@ -1,6 +1,6 @@
-# SRG Login SDK — Android Maven Repository
+# SRG Login SDK — Android Distribution
 
-![Latest Version](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fswisstxt.github.io%2Fsrg-login-sdk-distribution-android%2Fch%2Fsrg%2Flogin%2Fsrglogin-core-android%2Fmaven-metadata.xml&query=%2F%2Flatest&label=latest&color=blue)
+![SDK Version](https://img.shields.io/badge/dynamic/xml?url=https%3A%2F%2Fswisstxt.github.io%2Fsrg-login-sdk-distribution-android%2Fch%2Fsrg%2Flogin%2Fsrglogin-core-android%2Fmaven-metadata.xml&query=%2F%2Flatest&label=SDK%20Version&color=blue)
 
 ## Integration
 
@@ -48,10 +48,22 @@ import ch.srg.login.sdk.SrgLoginSdk
 class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
+
+        // Minimal — uses default token storage config
         SrgLoginSdk.initialize(
             platformContext = this,
             isDebugBuild = BuildConfig.DEBUG
         )
+
+        // Or customise token storage keys to avoid collisions with other SDK instances
+        // SrgLoginSdk.initialize(
+        //     platformContext = this,
+        //     isDebugBuild = BuildConfig.DEBUG,
+        //     tokenStorageConfig = TokenStorageConfig(
+        //         keystoreAlias = "your_app_token_key",
+        //         fileName = "your_app_tokens"
+        //     )
+        // )
     }
 }
 ```
@@ -176,13 +188,34 @@ srgLogin.observeTokenState().collect { state ->
 }
 ```
 
+### Get access token
+
+```kotlin
+// Check if the user is currently authenticated
+val isAuthenticated = srgLogin.isAuthenticated()
+
+// Get the current access token (always fetch at call time — the SDK refreshes it automatically)
+when (val result = srgLogin.getAccessToken()) {
+    is SdkResult.Success -> {
+        val authHeader = "Bearer ${result.data.value}"
+        // Use authHeader for your API calls
+    }
+    is SdkResult.Failure -> {
+        // e.g. SrgLoginError.NotAuthenticated if the user is not logged in
+        handleError(result.error)
+    }
+}
+```
+
+> Always call `getAccessToken()` at the point of use rather than caching the value. The SDK transparently refreshes the token when it is near expiry.
+
 ### Logout
 
 **Front-channel logout** — clears the server session and local tokens:
 
 ```kotlin
 val authContext = AndroidAuthContext(context = this, activity = this)
-val result = srgLogin.logout(
+srgLogin.logout(
     logoutType = LogoutType.FrontChannel(postLogoutRedirectUri = "your-app-scheme://logout"),
     authContext = authContext
 )
@@ -193,6 +226,30 @@ val result = srgLogin.logout(
 ```kotlin
 srgLogin.logout(logoutType = LogoutType.LocalOnly)
 ```
+
+### SSO — open a URL with the user's active session
+
+`openSsoClient` opens any URL in a Chrome Custom Tab with the user's IDP session cookie already injected. The page loads without prompting for credentials — the user is silently authenticated via SSO.
+
+```kotlin
+val authContext = AndroidAuthContext(context = this, activity = this)
+
+srgLogin.openSsoClient(
+    ssoClientUrl = "https://settings.srgssr.ch/profile",
+    authContext = authContext
+)
+```
+
+### Reconfiguration
+
+To switch environments or update the OAuth config at runtime:
+
+```kotlin
+SrgLoginSdk.shutdown()
+// Then call initialize(...) and create(config) again with the new config
+```
+
+> Always cancel any active `observeTokenState()` collection before calling `shutdown()`.
 
 ---
 
