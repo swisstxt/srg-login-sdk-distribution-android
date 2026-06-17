@@ -1,0 +1,193 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "url": "../../srglogin-core/1.0.0-rc.1/srglogin-core-1.0.0-rc.1.module",
+    "group": "ch.srg.login",
+    "module": "srglogin-core",
+    "version": "1.0.0-rc.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.3.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "androidApiElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "srglogin-core.aar",
+          "url": "srglogin-core-android-1.0.0-rc.1.aar",
+          "size": 800984,
+          "sha512": "31e88dbb618ea482fec5733bce193a656fe3eca9d214a65f98f881013c1b1610ed53f80d7ccc5c60aa9a33342560037d2256e8b2ccfb6fffe93d2a38c067c02e",
+          "sha256": "f1b4f05c9a19a5e229c29a18ad069ca46eac173d533c02673f8b449e12ce9dac",
+          "sha1": "1183d2a2974851a10ea493a17143f1d5cda30b80",
+          "md5": "5c3171bcdbfc42365089fe8144459ca6"
+        }
+      ]
+    },
+    {
+      "name": "androidRuntimeElements-published",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.3.0"
+          }
+        },
+        {
+          "group": "io.ktor",
+          "module": "ktor-client-okhttp",
+          "version": {
+            "requires": "2.3.12"
+          }
+        },
+        {
+          "group": "androidx.browser",
+          "module": "browser",
+          "version": {
+            "requires": "1.8.0"
+          }
+        },
+        {
+          "group": "androidx.security",
+          "module": "security-crypto",
+          "version": {
+            "requires": "1.1.0-alpha06"
+          }
+        },
+        {
+          "group": "androidx.lifecycle",
+          "module": "lifecycle-process",
+          "version": {
+            "requires": "2.9.2"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-serialization-json",
+          "version": {
+            "requires": "1.6.3"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlinx",
+          "module": "kotlinx-datetime",
+          "version": {
+            "requires": "0.6.1"
+          }
+        },
+        {
+          "group": "io.insert-koin",
+          "module": "koin-core",
+          "version": {
+            "requires": "3.5.3"
+          }
+        },
+        {
+          "group": "io.ktor",
+          "module": "ktor-client-core",
+          "version": {
+            "requires": "2.3.12"
+          }
+        },
+        {
+          "group": "io.ktor",
+          "module": "ktor-client-content-negotiation",
+          "version": {
+            "requires": "2.3.12"
+          }
+        },
+        {
+          "group": "io.ktor",
+          "module": "ktor-client-logging",
+          "version": {
+            "requires": "2.3.12"
+          }
+        },
+        {
+          "group": "io.ktor",
+          "module": "ktor-serialization-kotlinx-json",
+          "version": {
+            "requires": "2.3.12"
+          }
+        },
+        {
+          "group": "io.ktor",
+          "module": "ktor-utils",
+          "version": {
+            "requires": "2.3.12"
+          }
+        },
+        {
+          "group": "co.touchlab",
+          "module": "kermit",
+          "version": {
+            "requires": "2.0.3"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "srglogin-core.aar",
+          "url": "srglogin-core-android-1.0.0-rc.1.aar",
+          "size": 800984,
+          "sha512": "31e88dbb618ea482fec5733bce193a656fe3eca9d214a65f98f881013c1b1610ed53f80d7ccc5c60aa9a33342560037d2256e8b2ccfb6fffe93d2a38c067c02e",
+          "sha256": "f1b4f05c9a19a5e229c29a18ad069ca46eac173d533c02673f8b449e12ce9dac",
+          "sha1": "1183d2a2974851a10ea493a17143f1d5cda30b80",
+          "md5": "5c3171bcdbfc42365089fe8144459ca6"
+        }
+      ]
+    },
+    {
+      "name": "androidSourcesElements-published",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.jvm.environment": "android",
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime",
+        "org.jetbrains.kotlin.platform.type": "androidJvm"
+      },
+      "files": [
+        {
+          "name": "srglogin-core-android-1.0.0-rc.1-sources.jar",
+          "url": "srglogin-core-android-1.0.0-rc.1-sources.jar",
+          "size": 226811,
+          "sha512": "93b1fa87062f29ba44239d7b6878e8f07f47e5210064476a38ae1c8161775ccd4a0391e81c6761fd1fcb560dd248f4429e58d316cc80fefb21d7708c368cbf75",
+          "sha256": "55c4812d98b2f5b0cdd0b66f14ff470dcbd19fb288dc1d2593ab4beaf915ebdc",
+          "sha1": "f9cdb3b547596d6526d9f67cf8369ca696a00e77",
+          "md5": "276bec5d0d5239e4b86ac69c20ebfcfa"
+        }
+      ]
+    }
+  ]
+}
